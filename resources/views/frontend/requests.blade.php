@@ -1,0 +1,121 @@
+
+@extends('frontend.master')
+@section('frontend')
+
+
+
+
+<main id="main">
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <ol class="mt-3">
+      <li><a href="{{route('home')}}"> الرئيسة </a></li>
+      <li> الخدمات المطلوبة </li>
+    </ol>
+    <h2 class="title"> الخدمات المطلوبة  </h2>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+<section class="inner-page">
+<div class="container d-md-flex">
+   <!-- Page Content  -->
+
+
+   <nav id="sidebar">
+
+   <div class="form-outline">
+  <input type="search" id="form1" class="form-control" placeholder=" البحث " aria-label="Search" />
+</div>
+    
+				<div class="p-4 pt-5">
+					<h5 class="sidebar_title"> الخدمات </h5>
+	        <ul class="list-unstyled components mb-5">
+	          <!-- <li>
+	            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mens Shoes</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Casual</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Football</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Jordan</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Lifestyle</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Running</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Soccer</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Sports</a></li>
+	            </ul>
+	          </li> -->
+              @foreach($services as $ser)
+                <li>
+	            <a href="{{ route('serReq',$ser->id) }}" data-toggle="collapse"> {{ $ser->services  }}  </a>
+	          </li>
+                @endforeach
+	         
+	        </ul>
+					
+			
+           
+
+
+
+    	</nav>
+
+
+        @foreach($allreqs as $item)     
+
+   <div id="content" class="">
+
+   
+   <div class="card">
+  <div class="card-body">
+    <h5 class="card-title"> {{$item->title}}</h5>
+    <a href="" class="btn btn-outline-primary req-ser"> {{$item->ser->services}} </a>
+    <h6 class="card-text mt-5"> {{$item->description}}</h6>
+    <hr class="hr" />
+    <a href="" class="btn btn-outline-primary"> اسم المستخدم: {{$item->reqUser->name}}  </a>
+    <a href="" class="btn btn-outline-primary"> التكلفة: ${{$item->cost}} </a>
+    <a href="" class="btn btn-outline-primary"> الحالة: {{$item->status->status}} </a>
+    
+    <p class="req-date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</p>
+  </div>
+
+  
+</div>
+<br>
+@endforeach
+
+
+<div class="pagination-wrap">
+{{ $allreqs->links('vendor.pagination.custom') }}
+</div>
+
+
+ 
+                    
+    
+  </div>
+</section>
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row">
+          <div class="col-lg-6 text-center text-lg-start">
+            <h3>{{$cta->title}}</h3>
+            <p> {{$cta->description}}</p>
+          </div>
+          <div class="col-lg-6 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="{{ route('register') }}">سجل كمستخدم</a>
+            <a class="cta-btn align-middle" href="{{ route('register') }}">سجل لتصبح مقدم خدمة</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+</main><!-- End #main -->
+
+
+@endsection
