@@ -22,6 +22,7 @@ use App\Models\ReqServices;
 use App\Models\Requests;
 use Illuminate\Support\Carbon;
 use DB;
+
 use Image;
 
 class Admin extends Controller
@@ -140,15 +141,15 @@ class Admin extends Controller
         if(! $request->role_id){
             }else{$data['role_id'] = $request->role_id;}
 
-        
 
 
-        // $data['role_id'] = $request->role_id;    
+
+        // $data['role_id'] = $request->role_id;
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->newpassword);
 
-    
+
     DB::table('users')->where('id',$id)->update($data);
     session()->flash('message','User Updated Successfully');
         return redirect()->route('allUsers');
@@ -168,7 +169,7 @@ class Admin extends Controller
         $data['phoneNumber'] = $request->phoneNumber;
         $data['password'] = Hash::make($request->newpassword);
 
-    
+
     DB::table('users')->insert($data);
     session()->flash('message','User Added Successfully');
         return redirect()->back();
@@ -197,14 +198,14 @@ class Admin extends Controller
             HomeHeroBanner::findOrFail($hero_id)->update([
                 'sub_title' => $request->sub_title,
                 'title' => $request->title,
-                
+
                 'description' => $request->description,
                 'button' => $request->button,
                 'image' => $save_url,
 
-            ]); 
+            ]);
             $notification = array(
-            'message' => 'Hero Banner Updated Successfully', 
+            'message' => 'Hero Banner Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -218,10 +219,10 @@ class Admin extends Controller
                 'description' => $request->description,
                 'button' => $request->button,
 
-            ]); 
+            ]);
 
             $notification = array(
-            'message' => 'Hero Banner Updated Successfully', 
+            'message' => 'Hero Banner Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -249,10 +250,10 @@ class Admin extends Controller
                 'l2' => $request->l2,
                 'l3' => $request->l3,
 
-            ]); 
+            ]);
 
             $notification = array(
-            'message' => 'About Us Updated Successfully', 
+            'message' => 'About Us Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -288,10 +289,10 @@ class Admin extends Controller
                 'tab33' => $request->tab33,
                 'tab34' => $request->tab34,
 
-            ]); 
+            ]);
 
             $notification = array(
-            'message' => 'How Does It Work Updated Successfully', 
+            'message' => 'How Does It Work Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -319,11 +320,11 @@ class Admin extends Controller
                 'description3' => $request->description3,
                 'title4' => $request->title4,
                 'description4' => $request->description4,
-                
-            ]); 
+
+            ]);
 
             $notification = array(
-            'message' => 'For Requesters Updated Successfully', 
+            'message' => 'For Requesters Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -349,7 +350,7 @@ class Admin extends Controller
             $save_url = 'upload/provider/'.$name_gen;
 
             ForProviderSection::findOrFail($prov_id)->update([
-                
+
                 'description' => $request->description,
                 'title1' => $request->title1,
                 'description1' => $request->description1,
@@ -359,9 +360,9 @@ class Admin extends Controller
                 'description3' => $request->description3,
                 'image' => $save_url,
 
-            ]); 
+            ]);
             $notification = array(
-            'message' => 'For Provider Updated Successfully', 
+            'message' => 'For Provider Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -378,10 +379,10 @@ class Admin extends Controller
                 'title3' => $request->title3,
                 'description3' => $request->description3,
 
-            ]); 
+            ]);
 
             $notification = array(
-            'message' => 'For Provider Updated Successfully', 
+            'message' => 'For Provider Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -402,15 +403,15 @@ class Admin extends Controller
          $cta = $request->id;
 
           CTA::findOrFail($cta)->update([
-                
+
                 'title' => $request->title,
                 'description' => $request->description,
-                
-                
-            ]); 
+
+
+            ]);
 
             $notification = array(
-            'message' => 'CTA Updated Successfully', 
+            'message' => 'CTA Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -428,18 +429,18 @@ class Admin extends Controller
          $social = $request->id;
 
           Social::findOrFail($social)->update([
-                
+
                 'facebook' => $request->facebook,
                 'tw' => $request->tw,
                 'insta' => $request->insta,
                 'linkedin' => $request->linkedin,
                 'youtube' => $request->youtube,
-                
-                
-            ]); 
+
+
+            ]);
 
             $notification = array(
-            'message' => 'Social Media Updated Successfully', 
+            'message' => 'Social Media Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -457,7 +458,7 @@ class Admin extends Controller
     }
 
      public function NewService(){
-        
+
         return view('Admin.services.add_service');
     }
 
@@ -466,9 +467,9 @@ class Admin extends Controller
         $data = array();
         $data['title'] = $request->title;
         $data['description'] = $request->description;
-        
 
-    
+
+
     DB::table('services')->insert($data);
     session()->flash('message','Service Added Successfully');
         return redirect()->route('allServices');
@@ -484,7 +485,7 @@ class Admin extends Controller
 
      public function editService($id){
         $service = DB::table('services')->where('id',$id)->first();
-        
+
         return view('Admin.services.edit_service', compact('service'));
     }
 
@@ -493,12 +494,12 @@ class Admin extends Controller
         $id = $request->id;
         $services = DB::table('services')->where('id',$id)->first();
         $data = array();
-       
+
         $data['title'] = $request->title;
         $data['description'] = $request->description;
-        
 
-    
+
+
     DB::table('services')->where('id',$id)->update($data);
     session()->flash('message','Service Updated Successfully');
         return redirect()->route('allServices');
@@ -517,7 +518,7 @@ class Admin extends Controller
     }
 
      public function NewFaqs(){
-        
+
         return view('Admin.faqs.add_faqs');
     }
 
@@ -526,9 +527,9 @@ class Admin extends Controller
         $data = array();
         $data['question'] = $request->question;
         $data['answer'] = $request->answer;
-        
 
-    
+
+
     DB::table('faqs')->insert($data);
     session()->flash('message','Faqs Added Successfully');
         return redirect()->route('allFaqs');
@@ -544,7 +545,7 @@ class Admin extends Controller
 
      public function editFaqs($id){
         $faqs = DB::table('Faqs')->where('id',$id)->first();
-        
+
         return view('Admin.faqs.edit_faqs', compact('faqs'));
     }
 
@@ -553,12 +554,12 @@ class Admin extends Controller
         $id = $request->id;
         $faqs = DB::table('faqs')->where('id',$id)->first();
         $data = array();
-       
+
         $data['question'] = $request->question;
         $data['answer'] = $request->answer;
-        
 
-    
+
+
     DB::table('faqs')->where('id',$id)->update($data);
     session()->flash('message','Faqs Updated Successfully');
         return redirect()->route('allFaqs');
@@ -568,12 +569,52 @@ class Admin extends Controller
 //----------------------------------------------------------------------------------
 
     public function adminAllReq(){
-        
+
             $user= Auth::User()->id;
             $services= ReqServices::latest()->get();
             $requests= Requests::latest()->get();
             return view('Admin.requests.allRequests', compact('services', 'requests', 'user'));
-    
+
     }
+
+
+ public function deleteReq($id){
+    DB::table('requests')->where('id',$id)->delete();
+    session()->flash('message','Request Deleted Successfully');
+    return redirect()->back();
+}
+
+
+ public function editReq($id){
+    $req = DB::table('requests')->where('id',$id)->first();
+    $service = ReqServices::get();
+    $status = ReqStatus::get();
+    return view('Admin.requests.editRequest', compact('service', 'req', 'status'));
+}
+
+
+public function updateReq(Request $request){
+    $id = $request->id;
+    $requests = DB::table('requests')->where('id',$id)->first();
+    $data = array();
+
+    if(! $request->service_id){
+    }else{$data['service_id'] = $request->service_id;}
+
+    $data['title'] = $request->title;
+    $data['description'] = $request->description;
+    $data['cost'] = $request->cost;
+
+    if(! $request->status_id){
+    }else{$data['status_id'] = $request->status_id;}
+
+    $data['updated_at'] = Carbon::now();
+
+
+
+DB::table('requests')->where('id',$id)->update($data);
+session()->flash('message','Request Updated Successfully');
+    return redirect()->route('admin.allReq');
+}
 
 }

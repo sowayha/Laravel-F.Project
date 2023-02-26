@@ -33,6 +33,110 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# form COntrol
+--------------------------------------------------------------*/
+.form-control {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+    background: none; }
+    .form-control:active, .form-control:focus {
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border-color: #000; }
+
+  .col-form-label {
+    color: #000;
+    font-size: 13px; }
+
+
+
+  .custom-select {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0; }
+    .custom-select:active, .custom-select:focus {
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border-color: #000; }
+
+
+
+
+  .contact-wrap {
+    -webkit-box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.2);
+    background: #fff; }
+    .contact-wrap .col-form-label {
+      font-size: 14px;
+      color: #b3b3b3;
+      margin: 0 0 10px 0;
+      display: inline-block;
+      padding: 0; }
+    .contact-wrap .form, .contact-wrap .contact-info {
+      padding: 40px; }
+    .contact-wrap .contact-info {
+      color: rgba(255, 255, 255, 0.5); }
+      .contact-wrap .contact-info ul li {
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.5); }
+        .contact-wrap .contact-info ul li .wrap-icon {
+          font-size: 20px;
+          color: #fff;
+          margin-top: 5px; }
+    .contact-wrap .form {
+      background: #fff; }
+      .contact-wrap .form h3 {
+        color: #000;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 30px; }
+    .contact-wrap .contact-info {
+      height: 100vh;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat; }
+      .contact-wrap .contact-info a {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0; }
+      @media (max-width: 1199.98px) {
+        .contact-wrap .contact-info {
+          height: 400px !important; } }
+      .contact-wrap .contact-info h3 {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 30px; }
+
+  label.error {
+    font-size: 12px;
+    color: red; }
+
+  #message {
+    resize: vertical; }
+
+  #form-message-warning, #form-message-success {
+    display: none; }
+
+  #form-message-warning {
+    color: #B90B0B; }
+
+  #form-message-success {
+    color: #55A44E;
+    font-size: 18px;
+    font-weight: bold; }
+
+
+
+/*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
 #preloader {
@@ -174,7 +278,7 @@ h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
   padding: 0;
@@ -304,7 +408,7 @@ h6 {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #fff;
@@ -923,7 +1027,7 @@ section {
   font-weight: 500;
   margin-bottom: 15px;
   font-size: 24px;
-  
+
 }
 
 .services .icon-box h4 a {
@@ -970,7 +1074,7 @@ section {
   font-family: "Jost", sans-serif;
   font-weight: 500;
   font-size: 16px;
-  
+
   display: inline-block;
   padding: 12px 40px;
   border-radius: 50px;
@@ -1108,7 +1212,7 @@ section {
 .portfolio .portfolio-item .portfolio-info p {
   color: #f9fcfe;
   font-size: 14px;
-  
+
 }
 
 .portfolio .portfolio-item .portfolio-info .preview-link,
@@ -1963,4 +2067,6 @@ section {
   #footer .credits {
     padding-top: 4px;
   }
+
+
 }

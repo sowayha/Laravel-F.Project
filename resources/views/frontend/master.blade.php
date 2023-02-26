@@ -36,6 +36,8 @@
 " rel="stylesheet">
 
 <link rel="stylesheet" href="{{asset('req/css/style.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('contactForm/css/style.css')}}"> --}}
+
 
 
   <!-- Template Main CSS File -->
@@ -77,7 +79,10 @@
     <script src="{{asset('req/js/popper.js')}}"></script>
     <script src="{{asset('req/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('req/js/main.js')}}"></script>
-    
+
+
+
+
 </body>
 
 </html>

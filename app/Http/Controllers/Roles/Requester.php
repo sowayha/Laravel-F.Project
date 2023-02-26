@@ -110,7 +110,7 @@ class Requester extends Controller
         $data['account_number'] = $request->accNumber;
         $data['account_name'] = $request->accName;
 
-    
+
     DB::table('bank_accounts')->insert($data);
     session()->flash('message','Your Bank Account Added Successfully');
         return redirect()->back();
@@ -131,7 +131,7 @@ class Requester extends Controller
         $data['account_number'] = $request->accNumber;
         $data['account_name'] = $request->accName;
 
-    
+
     DB::table('bank_accounts')->update($data);
     session()->flash('message','Your Bank Account Updated Successfully');
         return redirect()->route('requester.addBankAcc');
@@ -154,7 +154,7 @@ public function allServices(){
     $id = Auth::User()->id;
         $user = User::find($id);
         $status = ReqStatus::find(1);
-        $services = ReqServices::orderBy('services','ASC')->get();
+        $services = ReqServices::orderBy('id','ASC')->get();
     return view('Admin.requests.addRequest', compact('user', 'status', 'services'));
 }
 
@@ -168,7 +168,7 @@ public function addService(Request $request){
     $data['cost'] = $request->cost;
 
     $data['created_at'] = Carbon::now();
-    
+
 
 
 DB::table('requests')->insert($data);
@@ -196,14 +196,14 @@ public function updateService(Request $request){
     $id = $request->id;
     $requests = DB::table('requests')->where('id',$id)->first();
     $data = array();
-   
+
     $data['service_id'] = $request->service_id;
     $data['title'] = $request->title;
     $data['description'] = $request->description;
     $data['cost'] = $request->cost;
     $data['status_id'] = $request->status_id;
 
-    
+
 
 
 DB::table('requests')->where('id',$id)->update($data);

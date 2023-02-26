@@ -1,13 +1,13 @@
 <header id="header" class="fixed-top ">
     <div class="container d-flex justify-content-between">
-<div class="row justify-content-between">
+<div class="row align-items-center">
   <div class="col">
       <h1 class="logo me-auto" ><a href="{{route('home')}}" >Arak</a></h1>
 </div>
 </div>
       <nav id="navbar" class="navbar">
         <ul>
-          
+
         <li><a class="nav-link scrollto active" href="{{route('home')}}">الرئيسة</a></li>
 
         <li><a class="nav-link scrollto active" href="{{ route('front.reqPage')}}"> الطلبات </a></li>
@@ -30,10 +30,10 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> -->
-          
+
 
               @if (Route::has('login'))
-                
+
                     @auth
                         <a href="{{ route('admin.dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">حسابي</a>
                     @else
@@ -46,13 +46,13 @@
             @endif
 
 
-  
+
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      
+
 
     </div>
   </header>

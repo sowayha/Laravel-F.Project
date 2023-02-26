@@ -22,7 +22,12 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/requests', [App\Http\Controllers\HomeController::class, 'reqPage'])->name('front.reqPage');
-Route::get('/services/request/{id}', [App\Http\Controllers\HomeController::class, 'serReq'])->name('serReq');
+Route::get('/request/service/{id}', [App\Http\Controllers\HomeController::class, 'serReq'])->name('serReq');
+Route::get('/request/status/{id}', [App\Http\Controllers\HomeController::class, 'statusReq'])->name('statusReq');
+Route::get('/request/requester/{id}', [App\Http\Controllers\HomeController::class, 'requesterReq'])->name('requesterReq');
+Route::get('/service/details/{id}', [App\Http\Controllers\HomeController::class, 'reqDetails'])->name('requestDetails');
+Route::post('add/qoute', [App\Http\Controllers\HomeController::class, 'addQuote'])->name('addQuote');
+
 
 
 
@@ -47,6 +52,10 @@ Route::group(['prefix'=>'a' ,  'middleware'=>['auth','admin']], function(){
     Route::post('add/new/user', [App\Http\Controllers\Roles\Admin::class, 'addUser'])->name('admin.addnewUser');
 
     Route::get('requests', [App\Http\Controllers\Roles\Admin::class, 'adminAllReq'])->name('admin.allReq');
+    Route::get('edit/request/{id}', [App\Http\Controllers\Roles\Admin::class, 'editReq'])->name('editReq');
+    Route::post('update/request', [App\Http\Controllers\Roles\Admin::class, 'updateReq'])->name('updateReq');
+
+   Route::get('delete/request/{id}', [App\Http\Controllers\Roles\Admin::class, 'deleteReq'])->name('deleteReq');
 
 
 //------------------------------ Home Page Control ---------------------------------
@@ -116,7 +125,7 @@ Route::get('faqs', [App\Http\Controllers\Roles\Admin::class, 'faqs'])->name('all
      Route::post('update/faqs', [App\Http\Controllers\Roles\Admin::class, 'updateFaqs'])->name('updateFaqs');
 
     Route::get('delete/faqs/{id}', [App\Http\Controllers\Roles\Admin::class, 'deleteFaqs'])->name('deleteFaqs');
-    
+
 
 
 

@@ -7,7 +7,7 @@
         margin-right: 2px;
         color: #b70000;
         font-weight: 700px;
-    } 
+    }
 </style>
 
 <div class="page-content">
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <!-- end row -->
-          
+
 
 
             <div class="row mb-3">
@@ -73,7 +73,7 @@
             </div>
             <!-- end row -->
 
-           
+
 
             <div class="row mb-3">
                 <label for="cost" class="col-sm-2 col-form-label">  تكلفة الخدمة ($)</label>
@@ -84,16 +84,16 @@
             </div>
             <!-- end row -->
 
-            
+
             @error('cost')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
 
-           
+
             <br>
-   
+
 
 
 <input type="submit" class="btn btn-primary waves-effect waves-light" value="إضافة">
@@ -113,7 +113,7 @@
 
 
 <script type="text/javascript">
-    
+
     $(document).ready(function(){
         $('#image').change(function(e){
             var reader = new FileReader();
@@ -125,4 +125,4 @@
     });
 </script>
 
-@endsection 
+@endsection

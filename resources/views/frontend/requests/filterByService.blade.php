@@ -30,7 +30,7 @@
    <div class="form-outline">
   <input type="search" id="form1" class="form-control" placeholder=" البحث " aria-label="Search" />
 </div>
-    
+
 				<div class="p-4 pt-5">
 					<h5 class="sidebar_title"> الخدمات </h5>
 	        <ul class="list-unstyled components mb-5">
@@ -46,54 +46,74 @@
                 <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Sports</a></li>
 	            </ul>
 	          </li> -->
+              <li><a href="{{ route('front.reqPage')}}"> جميع الخدمات </a></li>
+
               @foreach($services as $ser)
-                <li>
-	            <a href="{{ route('serReq',$ser->id) }}" data-toggle="collapse"> {{ $ser->services  }}  </a>
-	          </li>
+
+
+              <li><a href="{{ route('serReq',$ser->id) }}">{{ $ser->services  }} </a></li>
                 @endforeach
-	         
+
 	        </ul>
-					
-			
-           
+            <h5 class="sidebar_title"> الحالة </h5>
+
+            <ul class="list-unstyled components mb-5">
+
+                <li><a href="{{ route('front.reqPage')}}"> الكل </a></li>
+
+                @foreach($status as $ser)
+
+
+                <li><a href="{{ route('statusReq',$ser->id) }}">{{ $ser->status  }} </a></li>
+                  @endforeach
+
+              </ul>
+
+
+
+
 
 
 
     	</nav>
 
-
-        @foreach($allreqs as $item)     
+        @if ($allreqs->isEmpty())
+        <h4> لا يوجد نتائج للبحث </h4>
+        @else
+        @foreach($allreqs as $item)
 
    <div id="content" class="">
 
-   
+
    <div class="card">
   <div class="card-body">
-    <h5 class="card-title"> {{$item->title}}</h5>
-    <a href="" class="btn btn-outline-primary req-ser"> {{$item->ser->services}} </a>
-    <h6 class="card-text mt-5"> {{$item->description}}</h6>
+
+    <a href="{{ route('serReq',$item->service_id) }}" class="btn btn-outline-primary req-ser"> {{$item->ser->services}} </a>
+    <h5 class="card-title"><a href="{{ route('requestDetails',$item->id) }}"> {{$item->title}} </a></h5>
+    <h6 class="card-text mt-5"> {{Str::limit($item->description, 100)}}</h6>
     <hr class="hr" />
-    <a href="" class="btn btn-outline-primary"> اسم المستخدم: {{$item->reqUser->name}}  </a>
+    <a href="{{ route('requesterReq',$item->user_id) }}" class="btn btn-outline-primary"> اسم المستخدم: {{$item->reqUser->name}}  </a>
     <a href="" class="btn btn-outline-primary"> التكلفة: ${{$item->cost}} </a>
     <a href="" class="btn btn-outline-primary"> الحالة: {{$item->status->status}} </a>
-    
+
     <p class="req-date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</p>
   </div>
 
-  
+
 </div>
 <br>
 @endforeach
 
-
 <div class="pagination-wrap">
-{{ $allreqs->links('vendor.pagination.custom') }}
-</div>
+    {{ $allreqs->links('vendor.pagination.custom') }}
+    </div>
+
+@endif
 
 
- 
-                    
-    
+
+
+
   </div>
 </section>
 

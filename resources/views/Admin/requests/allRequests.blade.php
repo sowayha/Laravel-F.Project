@@ -31,14 +31,16 @@
                             @if(Auth::user()->role_id == 1)
                             <th> المستخدم </th>
                             <th> التاريخ </th>
+                            <th> اخر تعديل </th>
+
                             @endif
-                            <th>نوع الخدمة</th> 
+                            <th>نوع الخدمة</th>
                             <th> عنوان الخدمة </th>
                             <th> وصف الخدمة </th>
                             <th> التكلفة </th>
                             <th> الحالة </th>
                             <th>أجراءات</th>
-                            
+
 
                         </thead>
 
@@ -47,17 +49,32 @@
                         	@php($i = 1)
                         	@foreach($requests as $item)
                         <tr>
-                        
+
                             <td> {{ $i++}} </td>
                             @if(Auth::user()->role_id == 1)
                         <td> {{ $item->reqUser->name }} </td>
                         <td> {{ Carbon\Carbon::parse($item->created_at)->diffForHumans()  }} </td>
+                        @if(! $item->updated_at )
+                        <td> -------------------- </td>
+                        @else
+
+                        <td> {{ Carbon\Carbon::parse($item->updated_at)->diffForHumans()  }} </td>
+                        @endif
                         @endif
                             <td> {{ $item->ser->services }} </td>
                             <td> {{ $item->title }} </td>
                             <td> {{ Str::limit($item->description , 50)}} </td>
-                            <td> ${{ $item->cost}} </td>  
-                            <td> {{ $item->status->status}} </td>                           
+                            <td> ${{ $item->cost}} </td>
+                            <td> {{ $item->status->status}} </td>
+
+                            @if(Auth::user()->role_id == 1)
+                            <td>
+                            <a href="{{ route('editReq',$item->id) }}" class="btn btn-primary sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+
+                            <a href="{{route('deleteReq',$item->id)}}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+
+                            </td>
+                            @else
 
                             <td>
    <a href="{{ route('editReqService',$item->id) }}" class="btn btn-primary sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
@@ -65,7 +82,7 @@
      <a href="{{route('deleteReqService',$item->id)}}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
 
                             </td>
-
+@endif
                         </tr>
                         @endforeach
 
